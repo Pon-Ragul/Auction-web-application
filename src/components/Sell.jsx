@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import {useState} from "react";
+import {useForm} from "react-hook-form";
 import "./sellform.css"; 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -44,7 +44,6 @@ export default function AuctionForm() {
               </div>
             ))}
           </div>
-
           <div className="form-group full-width">
             <label className="label">Seller Review</label>
             <textarea 
@@ -71,7 +70,7 @@ export default function AuctionForm() {
           <button onClick={sendToAuction} className="button">Send to Auction</button>
         </div>
       )}
-      <Footer />
+      <Footer/>
     </>
   );
 }
