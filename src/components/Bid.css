@@ -1,0 +1,191 @@
+.LiveContainer {
+    position: relative;
+    top: 60px;
+    padding-bottom: 130px;
+    overflow-x: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.LiveContainer::-webkit-scrollbar {
+    display: none; 
+}
+
+.Liveheading {
+    position: relative;
+    top: 110px;
+    left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.LiveAuction {
+    display: flex;
+    gap: 45px;
+}
+
+.Auction-Items {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    height: 470px;
+    width: 300px;
+    position: relative;
+    top: 100px;
+    left: 44px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Auction-Items:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.4);
+}
+
+.Info-button {
+    border: none;
+    height: 40px;
+    width: 50px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    position: relative;
+    top: 30px;
+    left: 30px;
+}
+
+.Info-button:hover {
+    background-color: rgb(71, 65, 65);
+}
+
+.Bid-button:hover {
+    background-color: rgb(235, 170, 118);
+}
+
+.Bid-button {
+    border: none;
+    height: 40px;
+    width: 185px;
+    border-radius: 10px;
+    background-color: rgb(215, 138, 76);
+    color: white;
+    position: relative;
+    top: 30px;
+    left: 35px;
+}
+
+.Auction-Items-Img {
+    position: relative;
+    height: 250px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.Item-name {
+    position: relative;
+    top: 20px;
+    text-align: center;
+}
+
+.Upcomingcontainer {
+    position: relative;
+    top: 150px;
+    padding-bottom: 130px;
+    overflow-x: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+.Upcomingcontainer::-webkit-scrollbar {
+    display: none; 
+}
+
+.Upcomingheading {
+    position: relative;
+    top: 190px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Info-button-upcoming {
+    border: none;
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgb(227, 227, 227);
+    color: black;
+    position: relative;
+    top: 30px;
+    left: 50px;
+}
+
+.Info-button-upcoming:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.Bid-footer {
+    position: relative;
+    top: 220px;
+}
+
+.Endedauction {
+    position: relative;
+    top: 210px;
+    padding-bottom: 130px;
+    overflow-x: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+.Endedauction::-webkit-scrollbar {
+    display: none; 
+}
+
+.Endedheading {
+    position: relative;
+    top: 250px;
+    left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Info-button-ended {
+    border: none;
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgb(227, 227, 227);
+    color: black;
+    position: relative;
+    top: 10px;
+}
+
+.Info-button-ended:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.no-liveauction {
+    position: relative;
+    top: 100px;
+    left: 34.9%;
+    padding: 60px;
+}
+
+.no-upcomingauction {
+    position: relative;
+    top: 100px;
+    left: 31.4%;
+    padding: 60px;
+}
+
+.no-endedauction {
+    position: relative;
+    top: 100px;
+    left: 34.3%;
+    padding: 60px;
+}
+
+.bidbackbutton {
+    position: relative;
+    top: 400px;
+}
+.auction-button-text{
+    position: relative;
+    bottom: 3px;
+    left: 2px;
+}

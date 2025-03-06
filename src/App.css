@@ -1,0 +1,506 @@
+body{
+  overflow-x: hidden;
+}
+.Header{
+  background-color:white;
+  box-shadow: 0 2px 5px rgba(0,0,.1,0.8);
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}/*
+.description {
+  display: flex;
+  flex-direction: column;
+  width: 94%;
+  height: 330px;
+  border-radius: 10px;
+  position: relative;
+  top:60px;
+  left: 3%;
+  padding: 20px;
+  flex-wrap: wrap;
+  color: black;
+}*/
+.Logo{
+  position: relative;
+  right: 30px;
+  height: 25px;
+  width: auto;
+  top: 4px;
+} 
+.list-of-items {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 100%;
+  position: relative;
+  top: 300px;
+}
+.list-img{
+  background-image: url('pixelcutt.jpg');
+  height:400px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 150px;
+  
+}
+.gadget{
+  position: relative;
+  top: -400px;
+  height: 670px;
+  margin-left: 15%;
+  width:auto;
+}
+.bid-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4); 
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 465px;
+  width: 80%;
+  margin:auto;
+  border: 1px solid rgb(255, 255, 255);
+}
+.bid-title{
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-right: 50px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bolder;
+}
+.bid-items{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  width: 80%;
+  position: relative;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bolder;
+  left: 8%;
+}
+.bid-item{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+}
+.check-icon{
+ padding: 2px 6px;
+}
+.tick{
+  border-radius: 50%;
+}
+.welcome{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 20px;
+  text-align: center;
+  height:200px;
+  width: 100%;
+  color: white;
+  justify-content: center;
+  /*background-color:  #b7b8bc;*/
+  background: linear-gradient(to right,#2e2e2e,#595959,#b0b0b0);
+  overflow: hidden;
+}
+.welcome p{
+  position: relative;
+  top: 90px;
+  right: 210px;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 20px;
+}
+.welcome h2{
+  position: relative;
+  top: 90px;
+  right: 210px;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 40px;
+}
+.people-img{
+  height: 200px;
+  position: relative;
+  left: 25%;
+  top: -61px;
+}
+.discount-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  width: 70%;
+  margin:auto;
+  border: 1px solid rgb(0, 0, 0);
+}
+.discount-items{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 30px;
+  width: 80%;
+  position: relative;
+  left: 5%;
+}
+.discount-item{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bolder;
+  color: black;
+}
+.description p{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 400;
+}
+.nav-icon{
+  position: relative;
+  right: 5px;
+}
+.nav-icon-home{
+  position: relative;
+  right: 4.5px;
+  bottom: 1.7px;
+}
+.navicons{
+  position: relative;
+  left: 3%;
+}
+.sellbidheading{
+  position: relative;
+  left: 38.3%;
+  bottom: 160px;
+}
+.Sellbid {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 100px;
+  position: relative;
+  top: 270px;
+  padding-top: 50px;
+  height: auto; /* Change fixed height to auto */
+  width: 90%;
+  border-radius: 30px;
+  left: 68px;
+  align-items: center;
+  flex-wrap: wrap; 
+}
+.bid {
+  margin-right: 155px; /* Creates space between .bid and .sell */
+}
+.bid, .sell {
+  position: relative;
+  right: 9%;
+  width: 34%;
+  height: 200px;
+  color: white;
+  background: linear-gradient(to right, #000000, #ddd8d8);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sell {
+  background: linear-gradient(to right, #fefefe, #ddd8d8);
+  color: black;
+}
+
+.bid:hover, .sell:hover {
+  transform: scale(1.05);
+  box-shadow: 2px 2px 2px 1px rgb(0, 0, 0);
+}
+.startbidding {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+.sellbidicons{
+  position: relative;
+  bottom: 28px;
+  left: 12%;
+  height: 21px;
+}
+.footer {
+  background-color: #1a3b5d; 
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  position: relative;
+  top: 100px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
+  top: 10px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  
+}
+.info-icon{
+  position: relative;
+  right: 3px;
+  bottom: 2px;
+}
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.footer-socials-icons{
+  background-color: white;
+  height: 200px;
+  width:auto;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: #ccc;
+  
+}
+
+.footer-copyright .highlight {
+  color: #ff8c00; /* Orange highlight for "Bidderboy Corporation" */
+}
+.bidimg{
+  height: 200px;
+  width: auto;
+  position: relative;
+  left:40%;
+  bottom: 120px;
+}
+.sellimg{
+  height: 220px;
+  width: auto;
+  position: relative;
+  left:42%;
+  bottom: 127px;
+}
+.rules{
+   margin-top: 400px;
+}
+.list_of_rules{
+  position: relative;
+  left: 500px;
+}
+.line{
+  width: 600px;
+  margin-left: 400px;
+}
+
+.termsandcondition{
+  display: grid;
+  justify-content: center;
+  margin: 100px 100px 100px 140px;
+  height: 1600px;
+  border-radius: 20px;
+  width:80%;
+  border-color: black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); 
+  padding: 30px 30px 30px 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+.termsandcondition p{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 520;
+}
+.termsandcondition h3{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #894c4c;
+  font-size: 23px;
+}
+.ResponsibleBidding{
+  display: grid;
+  justify-content: center;
+  margin: 100px 100px 100px 140px;
+  height: 800px;
+  border-radius: 20px;
+  width:80%;
+  border-color: black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); 
+  padding: 30px 30px 30px 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+.ResponsibleBidding p{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 520;
+}
+.ResponsibleBidding h3{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #894c4c;
+  font-size: 23px;
+}
+.FAQs{
+  display: grid;
+  justify-content: center;
+  margin: 100px 100px 100px 140px;
+  height: 1100px;
+  border-radius: 20px;
+  width:80%;
+  border-color: black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); 
+  padding: 30px 30px 30px 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+.FAQs p{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 520;
+}
+.FAQs h3{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #045c6c;
+  font-size: 23px;
+}
+.underline{
+  border: 1px solid #894c4c; 
+}
+.backgroundlogo{
+  position: fixed;
+  bottom: 200px;
+  width: 100%;
+  height: auto;
+  opacity: 0.05;
+}
+.search-bar{
+  width: 100%;
+  border-radius: 30px;
+  position: relative;
+  top: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+#search-input{
+  width: 70%;
+  
+  position: relative; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+#searchbutton{
+  position: relative;
+  left: 11.5%;
+}
+.search-icon{
+  position: relative;
+  bottom: 2px;
+}
+.aboutus{
+  display: grid;
+  justify-content: center;
+  margin: 100px 100px 100px 140px;
+  height: 450px;
+  border-radius: 20px;
+  width:80%;
+  border-color: black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); 
+  padding: 30px 30px 30px 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+.aboutus p{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 520;
+}
+.backbutton{
+  border: none;
+  height: 45px;
+  width: 120px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(to right,#0c0c0c,#c0bcbc);
+  position: relative;
+  left: 45.7%;
+  top: 50px;
+}
+.backbutton:hover{
+  background: linear-gradient(to right,#3d3d3d,#d2d1d1);
+}
+.rules-container {
+  max-width: 600px;
+  background: #ffffff;
+  padding: 20px;
+  margin-left: 400px;
+  margin-top: 400px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rules-container h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.line {
+  width: 80%;
+  margin: 0 auto 15px auto;
+  border: 1px solid #b0b0b0;
+}
+
+.rules-list {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  position: relative;
+  left: 0px;
+}
+
+.rules-list li {
+  font-size: 18px;
+  color: #555;
+  background: #f8f9fa;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease-in-out;
+}
+
+.rules-list li:hover {
+  background: #e3e6ea;
+}
