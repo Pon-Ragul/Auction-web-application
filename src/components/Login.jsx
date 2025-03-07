@@ -1,25 +1,31 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './loginSignUp.css';
+import { Eye, EyeOff } from "lucide-react";
+import "./loginSignUp.css";
 
 export default function Login() {
-  const navigate=useNavigate();
-  const [formData,setFormData] =useState({email:"",password:"",});
-  const [isFormValid,setIsFormValid] = useState(false);
-  const handleChange=(e)=>{
-    const {name,value}=e.target;
-    const updatedFormData={ ...formData,[name]:value};
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const updatedFormData = { ...formData, [name]: value };
     setFormData(updatedFormData);
-    const allFieldsFilled=Object.values(updatedFormData).every(field=>field.trim()!=="");
+    const allFieldsFilled = Object.values(updatedFormData).every(
+      (field) => field.trim() !== ""
+    );
     setIsFormValid(allFieldsFilled);
   };
-  const handleSubmit=(e)=>{
-    e.preventDefault(); 
-    if(isFormValid){
-      navigate("/"); 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isFormValid) {
+      navigate("/");
     }
   };
-  
+
   return (
     <div className="login-page">
       <div className="login-container">
@@ -31,13 +37,14 @@ export default function Login() {
           <div className="form-group">
             <div>
               <label htmlFor="email">Email address</label>
-              <input type="email" name="email" placeholder="BidCraze@gmail.com"  value={formData.email} onChange={handleChange}/>
+              <input type="email" name="email" placeholder="BidCraze@gmail.com" value={formData.email} onChange={handleChange} required/>
             </div>
             <div>
-              <div className="password-container">
-                <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password</label>
+              <div className="password-input-container">
+                <input type={showPassword ? "text" : "password"} name="password" placeholder="*****" value={formData.password} onChange={handleChange} required/>
+                <button type="button" className="eye-icon" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}</button>
               </div>
-              <input type="password" name="password"  placeholder="*****" value={formData.password} onChange={handleChange}/>
             </div>
           </div>
           <div className="actions">
@@ -46,6 +53,6 @@ export default function Login() {
           </div>
         </form>
       </div>
-    </div> 
+    </div>
   );
-};
+}

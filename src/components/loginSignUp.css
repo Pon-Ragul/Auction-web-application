@@ -101,4 +101,48 @@
   .sign-up-link:hover {
     text-decoration: underline;
   }
+  .password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-input-container input {
+    width: 100%;
+    padding-right: 35px; 
+  }
+  
+  .eye-icon {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .eye-icon svg {
+    color: #666; 
+    transition: color 0.3s ease;
+  }
+  
+  .eye-icon:hover svg {
+    color: #333; 
+    background-color: white ;
+  }
+  .password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-input-container input {
+    width: 100%;
+    padding-right: 35px; 
+  }
+  
+  
   

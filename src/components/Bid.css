@@ -1,46 +1,46 @@
-.LiveContainer {
+.LiveContainer { 
     position: relative;
     top: 60px;
     padding-bottom: 130px;
     overflow-x: auto;
+    overflow-y: visible; 
+    white-space: nowrap;
     scrollbar-width: none; 
     -ms-overflow-style: none; 
 }
-
 .LiveContainer::-webkit-scrollbar {
     display: none; 
 }
-
+.LiveAuction {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center; 
+}
+.Auction-Items { 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    height: 470px;
+    width: 300px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+    z-index: 10; 
+    position: relative;
+    top: 100px;
+    left: 35px;
+}
+.Auction-Items:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
 .Liveheading {
     position: relative;
     top: 110px;
     left: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-.LiveAuction {
-    display: flex;
-    gap: 45px;
-}
-
-.Auction-Items {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    height: 470px;
-    width: 300px;
-    position: relative;
-    top: 100px;
-    left: 44px;
-    border-radius: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.Auction-Items:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.4);
-}
-
 .Info-button {
     border: none;
     height: 40px;
@@ -50,17 +50,14 @@
     color: white;
     position: relative;
     top: 30px;
-    left: 30px;
+    left: 25px;
 }
-
 .Info-button:hover {
     background-color: rgb(71, 65, 65);
 }
-
 .Bid-button:hover {
     background-color: rgb(235, 170, 118);
 }
-
 .Bid-button {
     border: none;
     height: 40px;
@@ -70,22 +67,19 @@
     color: white;
     position: relative;
     top: 30px;
-    left: 35px;
+    left: 20px;
 }
-
 .Auction-Items-Img {
     position: relative;
     height: 250px;
     border-radius: 30px;
     overflow: hidden;
 }
-
 .Item-name {
     position: relative;
     top: 20px;
     text-align: center;
 }
-
 .Upcomingcontainer {
     position: relative;
     top: 150px;
@@ -97,13 +91,11 @@
 .Upcomingcontainer::-webkit-scrollbar {
     display: none; 
 }
-
 .Upcomingheading {
     position: relative;
     top: 190px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .Info-button-upcoming {
     border: none;
     height: 40px;
@@ -115,16 +107,13 @@
     top: 30px;
     left: 50px;
 }
-
 .Info-button-upcoming:hover {
     background-color: rgb(240, 240, 240);
 }
-
 .Bid-footer {
     position: relative;
     top: 220px;
 }
-
 .Endedauction {
     position: relative;
     top: 210px;
@@ -136,14 +125,12 @@
 .Endedauction::-webkit-scrollbar {
     display: none; 
 }
-
 .Endedheading {
     position: relative;
     top: 250px;
     left: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .Info-button-ended {
     border: none;
     height: 40px;
@@ -154,32 +141,27 @@
     position: relative;
     top: 10px;
 }
-
 .Info-button-ended:hover {
     background-color: rgb(240, 240, 240);
 }
-
 .no-liveauction {
     position: relative;
     top: 100px;
     left: 34.9%;
     padding: 60px;
 }
-
 .no-upcomingauction {
     position: relative;
     top: 100px;
     left: 31.4%;
     padding: 60px;
 }
-
 .no-endedauction {
     position: relative;
     top: 100px;
     left: 34.3%;
     padding: 60px;
 }
-
 .bidbackbutton {
     position: relative;
     top: 400px;
@@ -189,3 +171,62 @@
     bottom: 3px;
     left: 2px;
 }
+.popup-input{
+    position: relative;
+    top: 30px;
+    width: 400px;
+}
+.popup-text{
+    position: relative;
+    top: 10px;
+}
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001; 
+    height: 300px;
+    width: 500px;
+}
+.popup-container h2 {
+    margin-bottom: 10px;
+}
+.popup-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    top: 45px;
+}
+.submit-bid, .close-popup {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.submit-bid {
+    background-color: green;
+    color: white;
+}
+.close-popup {
+    background-color: red;
+    color: white;
+}
+
