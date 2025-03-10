@@ -4,11 +4,11 @@ import {
     FaGithub, FaLinkedin
 } from 'react-icons/fa';
 import { Envelope } from "react-bootstrap-icons";
-export default function BidFooter() {
+export default function SellFooter() {
     return (
         <>
-            <Link to="/"><button className="bid-backbutton">Back</button></Link>
-            <Link to="/sell"><button className="bid-backbutton">Sell</button></Link>
+            <Link to="/"><button className="sell-backbutton">Back</button></Link>
+            <Link to="/bid"><button className="sell-backbutton">Bid</button></Link>
             <footer className="footer">
                 <div className="footer-container">
                     <div className="footer-links">

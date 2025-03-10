@@ -11,12 +11,14 @@ import TermsAndConditions from './components/TermsAndCondition';
 import Privacy from './components/Privacy';
 import WinningTips from './components/WinningTips';
 import ResponsibleBidding from './components/ResponsibleBidding';
+import ScrollToTop from './components/ScrollToTop';
 import Faqs from './components/FAQs';
 import Bid from './components/Bid';
 import './App.css';
 export default function App(){
   return(
   <Router>
+     <ScrollToTop/>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/signup" element={<SignUp/>}/>

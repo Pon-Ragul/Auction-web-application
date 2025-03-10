@@ -38,7 +38,7 @@ body{
   top: 300px;
 }
 .list-img{
-  background-image: url('pixelcutt.jpg');
+  background-image: url('pixelcuttt.jpg');
   height:400px;
   width: 100%;
   background-repeat: no-repeat;
@@ -188,7 +188,7 @@ body{
   position: relative;
   top: 270px;
   padding-top: 50px;
-  height: auto; /* Change fixed height to auto */
+  height: auto; 
   width: 90%;
   border-radius: 30px;
   left: 68px;
@@ -196,7 +196,7 @@ body{
   flex-wrap: wrap; 
 }
 .bid {
-  margin-right: 155px; /* Creates space between .bid and .sell */
+  margin-right: 155px; 
 }
 .bid, .sell {
   position: relative;
@@ -294,7 +294,7 @@ body{
 }
 
 .footer-copyright .highlight {
-  color: #ff8c00; /* Orange highlight for "Bidderboy Corporation" */
+  color: #ff8c00; 
 }
 .bidimg{
   height: 200px;
@@ -453,8 +453,32 @@ body{
   left: 45.7%;
   top: 50px;
 }
+.sell-backbutton:hover,
+.bid-backbutton:hover,
 .backbutton:hover{
   background: linear-gradient(to right,#3d3d3d,#d2d1d1);
+}
+.bid-backbutton{
+  border: none;
+  height: 45px;
+  width: 120px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(to right,#0c0c0c,#c0bcbc);
+  position: relative;
+  left: 42.2%;
+  top: 50px;
+}
+.sell-backbutton{
+  border: none;
+  height: 45px;
+  width: 120px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(to right,#0c0c0c,#c0bcbc);
+  position: relative;
+  left: 40.9%;
+  top: 50px;
 }
 .rules-container {
   max-width: 600px;

@@ -2,8 +2,7 @@ import {useState} from "react";
 import {useForm} from "react-hook-form";
 import "./sellform.css"; 
 import Header from "./Header";
-import Footer from "./Footer";
-
+import SellFooter from "./SellFooter";
 export default function AuctionForm() {
   const { register, handleSubmit, reset } = useForm(); 
   const [items, setItems] = useState([]);
@@ -70,7 +69,7 @@ export default function AuctionForm() {
           <button onClick={sendToAuction} className="button">Send to Auction</button>
         </div>
       )}
-      <Footer/>
+      <SellFooter/>
     </>
   );
 }

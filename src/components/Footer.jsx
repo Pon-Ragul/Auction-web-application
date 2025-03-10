@@ -1,7 +1,5 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { FaArrowLeft } from "react-icons/fa";
 import {
   FaGithub,FaLinkedin
 } from 'react-icons/fa';
@@ -9,7 +7,7 @@ import { Envelope } from "react-bootstrap-icons";
 const Footer = () => {
   return (
     <>
-    <Link to="/"><button className="backbutton"><FontAwesomeIcon icon={FaArrowLeft}/>  Back</button></Link>
+    <Link to="/"><button className="backbutton">Back</button></Link>
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-links">
