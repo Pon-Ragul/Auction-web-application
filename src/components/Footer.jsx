@@ -4,7 +4,7 @@ import {
   FaGithub,FaLinkedin
 } from 'react-icons/fa';
 import { Envelope } from "react-bootstrap-icons";
-const Footer = () => {
+export default function Footer(){
   return (
     <>
     <Link to="/"><button className="backbutton">Back</button></Link>
@@ -31,5 +31,3 @@ const Footer = () => {
   </>
   );
 };
-
-export default Footer;

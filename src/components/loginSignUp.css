@@ -1,5 +1,5 @@
 .login-page{
-    background-color: #171717;
+    
     height: 100vh;
     width: auto;
     /*background-image: url('background.jpg');
@@ -12,18 +12,30 @@
     max-width: 28rem;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    background-color: #2b2a2a;
-    color: #ffffff;
+    color: black;
     position: relative;
-    top: 100px;
+    top: 80px;
     left: 35%;
-    
-  }
-  
-  .header {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border: 0.5px solid black;
+}
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 28rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  color: black;
+  position: relative;
+  top: 40px;
+  left: 35%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border: 0.5px solid black;
+}
+.header {
     text-align: center;
     margin-bottom: 2rem;
-  }
+}
   
   .header h1 {
     font-size: 2rem;
@@ -33,7 +45,7 @@
   
   .header p {
     font-size: 0.875rem;
-    color: #ffffff;
+    color: black;
   }
   
   .form {
@@ -90,7 +102,7 @@
   .actions p {
     text-align: center;
     font-size: 0.875rem;
-    color: #ffffff;
+    color: black;
   }
   
   .sign-up-link {

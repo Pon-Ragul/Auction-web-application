@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import "./loginSignUp.css";
-
+import Header from "./Header";
+import Footer from "./Footer";
 export default function SignUp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
@@ -27,8 +28,10 @@ export default function SignUp() {
   };
 
   return (
+    <>
+    <Header/>
     <div className="login-page">
-      <div className="login-container">
+      <div className="signup-container">
         <div className="header">
           <h1>Sign Up</h1>
           <p>Sign up to create your account</p>
@@ -58,5 +61,7 @@ export default function SignUp() {
         </form>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }

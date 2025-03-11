@@ -38,8 +38,8 @@ export default function EndedAuction({ auctions }){
                             <img src={infoPopup.image} alt={infoPopup.name} className="popup-image" />
                             <div className="popup-details">
                                 <h4 className="popup-title">{infoPopup.name}</h4>
+                                <h5>Seller Review:</h5>
                                 <div className="popup-review-section">
-                                    <h5>Seller Review:</h5>
                                     <div className="popup-review-text">
                                         <p>The product is in great condition, thoroughly inspected to ensure quality and durability. It has been well-maintained, with no major signs of wear and tear. All functions work perfectly, and it has been cleaned and tested for optimal performance. A reliable choice for anyone looking for a high-quality product at a reasonable price!</p>
                                     </div>

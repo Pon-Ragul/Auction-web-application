@@ -14,10 +14,10 @@ export default function Bid() {
         { id: 4, name: "Samsung S24 ultra", mrp: 105000.0, image: "Samsung s25 ultra.jpg", basePrice: 55990, startDate: "2025-03-02", endDate: "2025-03-13" },
         { id: 5, name: "Realme 7", mrp: 15000.0, image: "Realme7.webp", basePrice: 4999, startDate: "2025-02-23", endDate: "2025-02-28" },
         { id: 6, name: "Iqoo z7 pro", mrp: 25000.0, image: "Iqoo z7 pro.webp", basePrice: 8999, startDate: "2025-03-12", endDate: "2025-03-16" },
-        { id: 7, name: "OnePlus 13", mrp: 70000.0, image: "oneplus13.webp", basePrice: 30990, startDate: "2025-03-06", endDate: "2025-03-13" },
+        { id: 7, name: "OnePlus 12", mrp: 60000.0, image: "oneplus13.webp", basePrice: 30990, startDate: "2025-03-06", endDate: "2025-03-13" },
         { id: 8, name: "Poco X2", mrp: 18000.0, image: "pocox2.jpg", basePrice: 5999, startDate: "2025-02-21", endDate: "2025-03-28" },
         { id: 9, name: "Redmi note 10 pro", mrp: 20000.0, image: "Redmi note 10 pro.jpg", basePrice: 6999, startDate: "2025-02-28", endDate: "2025-03-04" },
-        { id: 10, name: "Redmi note 8", mrp: 12000.0, image: "redminote8.jpg", basePrice: 2590, startDate: "2025-03-05", endDate: "2025-03-07" }
+        { id: 10, name: "Redmi note 8", mrp: 12000.0, image: "redminote8.jpg", basePrice: 2590, startDate: "2025-03-05" , endDate: "2025-03-07" }
     ]);
     const [searchQuery, setSearchQuery] = useState("");
     useEffect(() => {
@@ -46,12 +46,12 @@ export default function Bid() {
 
     return (
         <>
-            <Header />
-            <SearchBar onSearch={handleSearch} />
-            <LiveAuction auctions={liveAuctions} />
-            <UpcomingAuction auctions={upcomingAuctions} />
-            <EndedAuction auctions={endedAuctions} />
-            <div className="Bid-footer"><BidFooter /></div>
+            <Header/>
+            <SearchBar onSearch={handleSearch}/>
+            <LiveAuction auctions={liveAuctions}/>
+            <UpcomingAuction auctions={upcomingAuctions}/>
+            <EndedAuction auctions={endedAuctions}/>
+            <div className="Bid-footer"><BidFooter/></div>
         </>
     );
 }

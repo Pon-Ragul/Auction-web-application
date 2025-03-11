@@ -451,7 +451,7 @@ body{
   background: linear-gradient(to right,#0c0c0c,#c0bcbc);
   position: relative;
   left: 45.7%;
-  top: 50px;
+  top: 10px;
 }
 .sell-backbutton:hover,
 .bid-backbutton:hover,
