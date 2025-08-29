@@ -44,17 +44,18 @@
 }
   
 .button {
-  width: 100%;
-  margin-top: 10px;
-  background-color: #3b82f6;
+  width: 20%;
+  margin-top: 40px;
+  margin-left: 503px;
+  background: linear-gradient(to right,#0c0c0c,#c0bcbc);
   color: white;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
 }
   
 .button:hover {
-  background-color: #2563eb;
+  background: linear-gradient(to right,#3d3d3d,#d2d1d1);
 }
 
 .items-list {

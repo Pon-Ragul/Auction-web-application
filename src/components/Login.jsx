@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import "./loginSignUp.css";
-import Header from "./Header";
+import HeaderWrapper from "./HeaderWrapper";
 import Footer from "./Footer";
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
+
 export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isFormValid, setIsFormValid] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState(""); 
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,16 +27,42 @@ export default function Login() {
     setIsFormValid(allFieldsFilled);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isFormValid) {
-      navigate("/");
-    }
-  };
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  if (isFormValid) {
+    axios.post("http://localhost:3001/login", formData)
+      .then((res) => {
+        console.log(res.data);
+        // Store user data in auth context
+        login({
+          email: formData.email,
+          name: res.data.name || formData.email.split('@')[0], // Use email prefix if name not provided
+          id: res.data.id || Date.now() // Use timestamp as fallback ID
+        });
+        setAlertMessage("LOGIN SUCCESSFUL!");
+        setAlertType("success");
+        setTimeout(() => navigate("/"), 1500);
+      })
+      .catch((err) => {
+        if (err.response) {
+          setAlertMessage(err.response.data.message); 
+        } else {
+          setAlertMessage("SOMETHING WENT WRONG. PLEASE TRY AGAIN.");
+        }
+        setAlertType("error");
+        console.error(err);
+      });
+  }
+};
 
   return (
     <>
-    <Header/>
+    <HeaderWrapper/>
+        {alertMessage && (
+        <div className={`alert-box ${alertType}`}>
+            {alertMessage}
+        </div>
+        )}
     <div className="login-page">
       <div className="login-container">
         <div className="header">

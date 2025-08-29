@@ -1,9 +1,10 @@
 import React from "react";
-import Header from "./Header";
+import HeaderWrapper from "./HeaderWrapper";
 import WelcomeBanner from "./Welcome";
 import SellBid from "./SellBid";
 import HomeFooter from "./HomeFooter";
 import './Description.css';
+
 export default function Home(){
   const BidOn=[
     "Electronics Gadgets",
@@ -21,7 +22,7 @@ export default function Home(){
   ]
   return(
     <div className="home">
-      <Header/>
+      <HeaderWrapper/>
       <WelcomeBanner/>
       <div className="description">
         <h3><center>Incredible Discount Bidding Platform</center></h3>

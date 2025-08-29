@@ -5,21 +5,52 @@ import LiveAuction from "./LiveAuction";
 import UpcomingAuction from "./UpcomingAuction";
 import BidFooter from "./BidFooter";
 import EndedAuction from "./EndedAuction";
+import axios from "axios";
 
 export default function Bid() {
-    const [auctions, setAuctions] = useState([
-        { id: 1, name: "Rolex venerdi", mrp: 5000.0, image: "watch.jpg", basePrice: 1200, startDate: "2025-03-01", endDate: "2025-03-13" },
-        { id: 2, name: "Apple iPhone 15 Pro Max", mrp: 135000.0, image: "iphone 15.jpeg", basePrice: 79990, startDate: "2025-03-17", endDate: "2025-03-30" },
-        { id: 3, name: "Boat Stone 352 speaker", mrp: 800.0, image: "Boatspeaker.avif", basePrice: 120, startDate: "2025-02-17", endDate: "2025-03-13" },
-        { id: 4, name: "Samsung S24 ultra", mrp: 105000.0, image: "Samsung s25 ultra.jpg", basePrice: 55990, startDate: "2025-03-02", endDate: "2025-03-13" },
-        { id: 5, name: "Realme 7", mrp: 15000.0, image: "Realme7.webp", basePrice: 4999, startDate: "2025-02-23", endDate: "2025-02-28" },
-        { id: 6, name: "Iqoo z7 pro", mrp: 25000.0, image: "Iqoo z7 pro.webp", basePrice: 8999, startDate: "2025-03-12", endDate: "2025-03-16" },
-        { id: 7, name: "OnePlus 12", mrp: 60000.0, image: "oneplus13.webp", basePrice: 30990, startDate: "2025-03-06", endDate: "2025-03-13" },
-        { id: 8, name: "Poco X2", mrp: 18000.0, image: "pocox2.jpg", basePrice: 5999, startDate: "2025-02-21", endDate: "2025-03-28" },
-        { id: 9, name: "Redmi note 10 pro", mrp: 20000.0, image: "Redmi note 10 pro.jpg", basePrice: 6999, startDate: "2025-02-28", endDate: "2025-03-04" },
-        { id: 10, name: "Redmi note 8", mrp: 12000.0, image: "redminote8.jpg", basePrice: 2590, startDate: "2025-03-05" , endDate: "2025-03-07" }
-    ]);
+    const [auctions, setAuctions] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+    
+    // Fetch auction items from server
+    useEffect(() => {
+        const fetchAuctionItems = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/auctionitems');
+                const serverItems = response.data.map((item, index) => {
+                    // Format dates
+                    const startDate = new Date(item.startDate);
+                    const endDate = new Date(item.endDate);
+                    
+                    return {
+                        id: `server-${item._id}`,
+                        name: item.itemName,
+                        mrp: item.startingPrice * 1.5, // Estimate MRP as 1.5x starting price
+                        image: item.imageUrl || "/pixelcutt.jpg", // Use uploaded image or fallback
+                        basePrice: item.startingPrice,
+                        startDate: startDate.toISOString().split('T')[0],
+                        endDate: endDate.toISOString().split('T')[0],
+                        category: item.category,
+                        description: item.description,
+                        // Add seller information
+                        sellerName: item.sellerName || "Unknown Seller",
+                        sellerId: item.sellerId,
+                        // Add seller review information
+                        averageSellerRating: item.averageSellerRating || 0,
+                        totalSellerReviews: item.totalSellerReviews || 0,
+                        sellerReviews: item.sellerReviews || []
+                    };
+                });
+                
+                // Set auctions to only server items
+                setAuctions(serverItems);
+            } catch (error) {
+                console.error('Error fetching auction items:', error);
+            }
+        };
+        
+        fetchAuctionItems();
+    }, []);
+    
     useEffect(() => {
         const calculateRemainingDays = (auctions) => {
             return auctions.map((auction) => {
@@ -35,9 +66,11 @@ export default function Bid() {
         }, 1000 * 60 * 60 * 24);
         return () => clearInterval(interval);
     }, []); 
+    
     const handleSearch = (query) => {
         setSearchQuery(query.toLowerCase());
     };
+    
     const currentDate = new Date();
     const filterAuctions = (auctionList)=>auctionList.filter(auction => auction.name.toLowerCase().includes(searchQuery));
     const liveAuctions = filterAuctions(auctions.filter(auction => new Date(auction.startDate) <= currentDate && new Date(auction.endDate) >= currentDate));

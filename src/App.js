@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 import Home from './components/Home';
 import About from './components/About';
 import SignUp from './components/SignUp';
@@ -14,25 +15,29 @@ import ResponsibleBidding from './components/ResponsibleBidding';
 import ScrollToTop from './components/ScrollToTop';
 import Faqs from './components/FAQs';
 import Bid from './components/Bid';
+import HeaderWrapper from './components/HeaderWrapper';
 import './App.css';
+
 export default function App(){
   return(
-  <Router>
-     <ScrollToTop/>
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/signup" element={<SignUp/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/dashboard" element={<Dashboard/>}/>
-      <Route path="/sell" element={<Sell/>}/>
-      <Route path="/bid" element={<Bid/>}/>
-      <Route path="/term_and_condition" element={<TermsAndConditions/>}/>
-      <Route path="/privacy" element={<Privacy/>}/>
-      <Route path="/winningtips" element={<WinningTips/>}/>
-      <Route path="/responsiblebidding" element={<ResponsibleBidding/>}/>
-      <Route path="/faqs" element={<Faqs/>}/>
-      <Route path="/about" element={<About/>}/>
-    </Routes>
-  </Router>
+    <AuthProvider>
+      <Router>
+        <ScrollToTop/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/sell" element={<Sell/>}/>
+          <Route path="/bid" element={<Bid/>}/>
+          <Route path="/term_and_condition" element={<TermsAndConditions/>}/>
+          <Route path="/privacy" element={<Privacy/>}/>
+          <Route path="/winningtips" element={<WinningTips/>}/>
+          <Route path="/responsiblebidding" element={<ResponsibleBidding/>}/>
+          <Route path="/faqs" element={<Faqs/>}/>
+          <Route path="/about" element={<About/>}/>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }

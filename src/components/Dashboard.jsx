@@ -1,14 +1,23 @@
 import React from "react";
 import "./UserProfile.css";
-import Header from "./Header";
+import HeaderWrapper from "./HeaderWrapper";
+import { useAuth } from "../context/AuthContext";
 import {
   FaInstagram, FaLinkedin
 } from 'react-icons/fa';
 import { Envelope } from "react-bootstrap-icons";
+
 export default function Profile() {
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    // You can add navigation here if needed
+  };
+
   return (
     <>
-      <Header />
+      <HeaderWrapper />
       <div className="profile-container">
         <div className="user-info">
           <img
@@ -16,11 +25,11 @@ export default function Profile() {
             alt="Profile"
             className="profile-pic"
           />
-          <h1 className="name">User</h1>
-          <p className="email"><Envelope color="black" size={30} />@usermail</p>
+          <h1 className="name">{user?.name || "User"}</h1>
+          <p className="email"><Envelope color="black" size={30} />{user?.email || "@usermail"}</p>
           <p className="bio">Passionate bidder and collector.</p>
-          <p className="insta"><FaInstagram color="black" size={30} />User_Instagram</p>
-          <p className="linkedin"><FaLinkedin color="black" size={30} />User_LinkedIn</p>
+          <p className="insta"><FaInstagram color="black" size={30} />{user?.name || "User"}_Instagram</p>
+          <p className="linkedin"><FaLinkedin color="black" size={30} />{user?.name || "User"}_LinkedIn</p>
         </div>
         <div className="account-stats">
           <div className="stat">
@@ -56,6 +65,7 @@ export default function Profile() {
 
         <div className="account-settings">
           <button>Edit Profile</button>
+          <button onClick={handleLogout} style={{ marginLeft: '10px', backgroundColor: '#dc3545' }}>Logout</button>
         </div>
       </div>
     </>

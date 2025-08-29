@@ -1,0 +1,283 @@
+.notification-container {
+  position: relative;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 0;
+  vertical-align: baseline;
+  top: 2px;
+}
+
+.notification-button {
+  position: relative;
+  bottom: 2.3px;
+  /* Override Bootstrap button styles */
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  margin: 0;
+  padding: 8px 12px !important;
+  display: inline-flex !important;
+  align-items: center;
+  vertical-align: baseline;
+  line-height: 1;
+  text-decoration: none !important;
+  color: #000 !important;
+  font-size: inherit;
+  font-weight: inherit;
+  box-shadow: none !important;
+  transition: none;
+  /* Match other nav link styling */
+  font-family: inherit;
+}
+
+.notification-button:hover {
+  background: none !important;
+  border: none !important;
+  text-decoration: none !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+
+.notification-button:focus {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Ensure the icon inside the button is properly positioned */
+.notification-button .nav-icon {
+  position: relative;
+  right: 5px;
+  margin-right: 5px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+  z-index: 1001;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.notification-popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 350px;
+  max-height: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  z-index: 1000;
+  margin-top: 8px;
+  animation: slideDown 0.3s ease;
+  /* Ensure it's not affected by parent overflow */
+  overflow: visible;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+  border-radius: 8px 8px 0 0;
+}
+
+.notification-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-button {
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  color: #666;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+}
+
+.close-button:hover {
+  background-color: #e0e0e0 !important;
+}
+
+.close-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.notification-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.no-notifications {
+  padding: 40px 20px;
+  text-align: center;
+  color: #666;
+}
+
+.no-notifications p {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.no-notifications span {
+  font-size: 14px;
+  color: #999;
+}
+
+.notifications-list {
+  padding: 0;
+}
+
+.notification-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item:hover {
+  background-color: #f8f9fa;
+}
+
+.notification-item.unread {
+  background-color: #f0f8ff;
+}
+
+.notification-item.unread:hover {
+  background-color: #e6f3ff;
+}
+
+.notification-message {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #999;
+}
+
+.unread-indicator {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff4444;
+  border-radius: 50%;
+}
+
+/* Scrollbar styling */
+.notification-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.notification-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.notification-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .notification-popup {
+    width: 300px;
+    right: -50px;
+  }
+}
+
+/* Ensure notification works properly in header context */
+.Header .notification-container {
+  position: relative;
+  display: inline-block;
+}
+
+.Header .notification-popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Override any Bootstrap container styles that might affect positioning */
+.container .notification-container {
+  position: relative;
+  display: inline-block;
+}
+
+.d-flex .notification-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Ensure proper alignment with other nav items */
+.navicons .notification-container {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.navicons .notification-button {
+  display: inline-flex !important;
+  align-items: center;
+  vertical-align: middle;
+} 
