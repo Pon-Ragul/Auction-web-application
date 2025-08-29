@@ -34,10 +34,12 @@ export default function Login() {
       .then((res) => {
         console.log(res.data);
         // Store user data in auth context
+        console.log("Login response:", res.data);
         login({
           email: formData.email,
-          name: res.data.name || formData.email.split('@')[0], // Use email prefix if name not provided
-          id: res.data.id || Date.now() // Use timestamp as fallback ID
+          name: res.data.user.name || formData.email.split('@')[0], // Use email prefix if name not provided
+          _id: res.data.user._id, // Store the MongoDB ObjectId as _id
+          id: res.data.user._id // Also store as id for compatibility
         });
         setAlertMessage("LOGIN SUCCESSFUL!");
         setAlertType("success");

@@ -5,21 +5,7 @@ import './Notification.css';
 
 const Notification = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [notifications, setNotifications] = useState([
-    // Sample notifications - you can replace with actual data
-    {
-      id: 1,
-      message: "New bid placed on your item!",
-      time: "2 minutes ago",
-      isRead: false
-    },
-    {
-      id: 2,
-      message: "Your auction has ended successfully",
-      time: "1 hour ago",
-      isRead: false
-    }
-  ]);
+  const [notifications, setNotifications] = useState([]);
 
   const notificationRef = useRef(null);
 

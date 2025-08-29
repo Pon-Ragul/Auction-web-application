@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; 
-import Header from "./Header";
+import HeaderWrapper from "./HeaderWrapper";
 import SearchBar from "./SearchBar";
 import LiveAuction from "./LiveAuction";
 import UpcomingAuction from "./UpcomingAuction";
@@ -10,45 +10,54 @@ import axios from "axios";
 export default function Bid() {
     const [auctions, setAuctions] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+    const [loading, setLoading] = useState(false);
     
     // Fetch auction items from server
-    useEffect(() => {
-        const fetchAuctionItems = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/auctionitems');
-                const serverItems = response.data.map((item, index) => {
-                    // Format dates
-                    const startDate = new Date(item.startDate);
-                    const endDate = new Date(item.endDate);
-                    
-                    return {
-                        id: `server-${item._id}`,
-                        name: item.itemName,
-                        mrp: item.startingPrice * 1.5, // Estimate MRP as 1.5x starting price
-                        image: item.imageUrl || "/pixelcutt.jpg", // Use uploaded image or fallback
-                        basePrice: item.startingPrice,
-                        startDate: startDate.toISOString().split('T')[0],
-                        endDate: endDate.toISOString().split('T')[0],
-                        category: item.category,
-                        description: item.description,
-                        // Add seller information
-                        sellerName: item.sellerName || "Unknown Seller",
-                        sellerId: item.sellerId,
-                        // Add seller review information
-                        averageSellerRating: item.averageSellerRating || 0,
-                        totalSellerReviews: item.totalSellerReviews || 0,
-                        sellerReviews: item.sellerReviews || []
-                    };
-                });
+    const fetchAuctionItems = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('http://localhost:3001/auctionitems');
+            const serverItems = response.data.map((item, index) => {
+                // Format dates
+                const startDate = new Date(item.startDate);
+                const endDate = new Date(item.endDate);
                 
-                // Set auctions to only server items
-                setAuctions(serverItems);
-            } catch (error) {
-                console.error('Error fetching auction items:', error);
-            }
-        };
-        
+                return {
+                    id: `server-${item._id}`,
+                    name: item.itemName,
+                    mrp: item.startingPrice * 1.5,
+                    image: item.imageUrl || "/pixelcutt.jpg", 
+                    basePrice: item.startingPrice,
+                    startDate: startDate.toISOString().split('T')[0],
+                    endDate: endDate.toISOString().split('T')[0],
+                    category: item.category,
+                    description: item.description,
+                    // Add seller information
+                    sellerName: item.sellerName || "Unknown Seller",
+                    sellerId: item.sellerId,
+                    // Add seller review information
+                    averageSellerRating: item.averageSellerRating || 0,
+                    totalSellerReviews: item.totalSellerReviews || 0,
+                    sellerReviews: item.sellerReviews || []
+                };
+            });
+            
+            // Set auctions to only server items
+            setAuctions(serverItems);
+            console.log('Fetched auction items:', serverItems.length);
+        } catch (error) {
+            console.error('Error fetching auction items:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchAuctionItems();
+        
+        // Refresh data every 30 seconds to get new items
+        const interval = setInterval(fetchAuctionItems, 30000);
+        return () => clearInterval(interval);
     }, []);
     
     useEffect(() => {
@@ -79,7 +88,7 @@ export default function Bid() {
 
     return (
         <>
-            <Header/>
+            <HeaderWrapper/> 
             <SearchBar onSearch={handleSearch}/>
             <LiveAuction auctions={liveAuctions}/>
             <UpcomingAuction auctions={upcomingAuctions}/>

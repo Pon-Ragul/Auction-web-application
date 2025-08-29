@@ -151,3 +151,4 @@ This will add random reviews to existing auction items for testing purposes.
 - Reviews are sorted by creation date (newest first)
 - Average ratings are calculated to one decimal place
 - The system gracefully handles items with no reviews
+

@@ -37,10 +37,12 @@ export default function SignUp() {
   .then((res) => {
     console.log(res.data);
     // Store user data in auth context
+    console.log("Signup response:", res.data);
     login({
       email: formData.email,
       name: formData.name,
-      id: res.data.id || Date.now() // Use timestamp as fallback ID
+      _id: res.data.id, // Store the MongoDB ObjectId as _id
+      id: res.data.id // Also store as id for compatibility
     });
     setAlertMessage("SIGNUP SUCCESSFUL!");
     setAlertType("success");
