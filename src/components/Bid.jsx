@@ -18,10 +18,28 @@ export default function Bid() {
         try {
             const response = await axios.get('http://localhost:3001/auctionitems');
             const serverItems = response.data.map((item, index) => {
-                // Format dates
+                
                 const startDate = new Date(item.startDate);
                 const endDate = new Date(item.endDate);
                 
+                // Calculate days left immediately
+                const today = new Date();
+                let daysLeft = 0;
+                
+                // Handle edge cases and invalid dates
+                if (endDate && !isNaN(endDate.getTime())) {
+                    daysLeft = Math.max(0, Math.ceil((endDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
+                    
+                    // Additional debugging
+                    if (daysLeft === 0) {
+                        console.log(`Auction "${item.itemName}" has ended or ends today`);
+                    }
+                } else {
+                    console.warn(`Invalid end date for item: ${item.itemName}`, item.endDate);
+                }
+                
+                console.log(`Item: ${item.itemName}, End Date: ${endDate}, Today: ${today}, Days Left: ${daysLeft}`);
+
                 return {
                     id: `server-${item._id}`,
                     name: item.itemName,
@@ -30,15 +48,22 @@ export default function Bid() {
                     basePrice: item.startingPrice,
                     startDate: startDate.toISOString().split('T')[0],
                     endDate: endDate.toISOString().split('T')[0],
+                    daysLeft: daysLeft, // Add days left calculation here
                     category: item.category,
                     description: item.description,
                     // Add seller information
                     sellerName: item.sellerName || "Unknown Seller",
                     sellerId: item.sellerId,
+                    sellerEmail: item.sellerEmail || "seller@gmail.com",
                     // Add seller review information
                     averageSellerRating: item.averageSellerRating || 0,
                     totalSellerReviews: item.totalSellerReviews || 0,
-                    sellerReviews: item.sellerReviews || []
+                    sellerReviews: item.sellerReviews || [],
+                    // Add current bid information from database
+                    currentBid: item.currentBid,
+                    currentHighestBid: item.currentHighestBid,
+                    currentBidder: item.currentBidder,
+                    currentWinnerName: item.currentWinnerName
                 };
             });
             
@@ -63,16 +88,28 @@ export default function Bid() {
     useEffect(() => {
         const calculateRemainingDays = (auctions) => {
             return auctions.map((auction) => {
-                const endDate = new Date(auction.endDate).getTime();
-                const today = new Date().getTime();
-                const daysLeft = Math.max(0, Math.ceil((endDate - today) / (1000 * 60 * 60 * 24)));
+                const endDate = new Date(auction.endDate);
+                const today = new Date();
+                let daysLeft = 0;
+                
+                // Handle edge cases and invalid dates
+                if (endDate && !isNaN(endDate.getTime())) {
+                    daysLeft = Math.max(0, Math.ceil((endDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
+                } else {
+                    console.warn(`Invalid end date for auction: ${auction.name}`, auction.endDate);
+                }
+                
                 return { ...auction, daysLeft };
             });
         };
+        
+        // Calculate days left immediately when component mounts
         setAuctions((prevAuctions) => calculateRemainingDays(prevAuctions));
+        
+        // Update days left every minute for real-time countdown
         const interval = setInterval(() => {
             setAuctions((prevAuctions) => calculateRemainingDays(prevAuctions));
-        }, 1000 * 60 * 60 * 24);
+        }, 60000); // Update every minute instead of every day
         return () => clearInterval(interval);
     }, []); 
     
@@ -85,6 +122,13 @@ export default function Bid() {
     const liveAuctions = filterAuctions(auctions.filter(auction => new Date(auction.startDate) <= currentDate && new Date(auction.endDate) >= currentDate));
     const upcomingAuctions = filterAuctions(auctions.filter(auction => new Date(auction.startDate) > currentDate));
     const endedAuctions = filterAuctions(auctions.filter(auction => new Date(auction.endDate) < currentDate));
+
+    // Debug logging for live auctions
+    console.log('Live auctions with days left:', liveAuctions.map(auction => ({
+        name: auction.name,
+        daysLeft: auction.daysLeft,
+        endDate: auction.endDate
+    })));
 
     return (
         <>

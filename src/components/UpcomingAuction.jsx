@@ -37,15 +37,17 @@ export default function UpcomingAuction({ auctions }) {
                             <img src={infoPopup.image} alt={infoPopup.name} className="popup-image" />
                             <div className="popup-details">
                                 <h4 className="popup-title">{infoPopup.name}</h4>
-                                <h5>Seller Review:</h5>
+                                <p className="popup-category">Category: {infoPopup.category}</p>
+                                <h5>Description:</h5>
                                 <div className="popup-review-section">
                                     <div className="popup-review-text">
-                                        <p>The product is in great condition, thoroughly inspected to ensure quality and durability. It has been well-maintained, with no major signs of wear and tear. All functions work perfectly, and it has been cleaned and tested for optimal performance. A reliable choice for anyone looking for a high-quality product at a reasonable price!</p>
+                                        <p>{infoPopup.description || "No description available for this item."}</p>
                                     </div>
                                 </div>
                                 <div className="popup-contact">
-                                    <h6>Contact: seller@gmail.com</h6>
+                                    <h6>Contact: {infoPopup.sellerEmail || "seller@gmail.com"}</h6>
                                     <h6>Starts on: {infoPopup.startDate}</h6>
+                                    <h6>Base Price: ₹{infoPopup.basePrice}</h6>
                                 </div>
                             </div>
                         </div>

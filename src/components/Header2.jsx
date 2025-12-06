@@ -15,7 +15,6 @@ export default function Header2(){
             </div>
             <div className="navicons">
               <Link to="/" className="btn btn-basic text-black"><FontAwesomeIcon icon={faHome} className="nav-icon-home"/>Home</Link>
-              <Notification />
               <Link to="/dashboard" className="btn btn-basic text-black"><FontAwesomeIcon icon={faUserCircle} className="nav-icon"/>Dashboard</Link>
             </div>
           </div>

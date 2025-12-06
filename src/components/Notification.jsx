@@ -1,13 +1,40 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useSocket } from '../context/SocketContext';
+import { useAuth } from '../context/AuthContext';
 import './Notification.css';
 
 const Notification = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const { socket, connected } = useSocket();
+  const { user } = useAuth();
 
   const notificationRef = useRef(null);
+
+  // Listen for notifications from socket
+  useEffect(() => {
+    if (socket && connected && user) {
+      const handleNotification = (notificationData) => {
+        const newNotification = {
+          id: Date.now() + Math.random(),
+          message: notificationData.message,
+          time: new Date().toLocaleString(),
+          isRead: false,
+          type: notificationData.type
+        };
+        
+        setNotifications(prev => [newNotification, ...prev]);
+      };
+
+      socket.on('auction_notification', handleNotification);
+
+      return () => {
+        socket.off('auction_notification', handleNotification);
+      };
+    }
+  }, [socket, connected, user]);
 
   // Close popup when clicking outside
   useEffect(() => {
@@ -35,6 +62,11 @@ const Notification = () => {
           : notification
       )
     );
+  };
+
+  const deleteNotification = (id, event) => {
+    event.stopPropagation(); // Prevent marking as read when deleting
+    setNotifications(prev => prev.filter(notification => notification.id !== id));
   };
 
   const unreadCount = notifications.filter(notification => !notification.isRead).length;
@@ -74,14 +106,25 @@ const Notification = () => {
                 {notifications.map((notification) => (
                   <div 
                     key={notification.id} 
-                    className={`notification-item ${!notification.isRead ? 'unread' : ''}`}
+                    className={`notification-item ${!notification.isRead ? 'unread' : ''} ${notification.type || ''}`}
                     onClick={() => markAsRead(notification.id)}
                   >
-                    <div className="notification-message">
-                      {notification.message}
+                    <div className="notification-content">
+                      <div className="notification-message">
+                        {notification.message}
+                      </div>
+                      <div className="notification-time">
+                        {notification.time}
+                      </div>
                     </div>
-                    <div className="notification-time">
-                      {notification.time}
+                    <div className="notification-actions">
+                      <button 
+                        className="delete-notification-btn"
+                        onClick={(e) => deleteNotification(notification.id, e)}
+                        title="Delete notification"
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
                     </div>
                     {!notification.isRead && (
                       <div className="unread-indicator"></div>

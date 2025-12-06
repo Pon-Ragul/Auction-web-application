@@ -134,7 +134,7 @@ export default function Sell() {
   
   return (
     <>
-      <HeaderWrapper />
+      <HeaderWrapper/>
       <div className="sell-container">
         <div className="sell-header">
           <h1>Sell Your Items</h1>

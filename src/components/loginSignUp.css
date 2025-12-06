@@ -1,10 +1,6 @@
 .login-page{
-    
     height: 100vh;
     width: auto;
-    /*background-image: url('background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;*/
 }
 .login-container {
     display: flex;
