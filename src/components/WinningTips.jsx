@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header";
+import HeaderWrapper from "./Header2";
 import Footer from "./Footer";
 export default function WinningTips(){
     return(
        <>
-       <Header/>
+       <HeaderWrapper />
         <div className="termsandcondition">
             <p><h2 style={{fontWeight:530}} className="heading"><center>WINNING TIPS</center></h2>
             <br/><br/><h3>Do Your Research<hr className="underline"></hr></h3>Before placing a bid, read the item description thoroughly, check the seller’s reputation, and compare prices to ensure you're getting a great deal.<br/><br/>

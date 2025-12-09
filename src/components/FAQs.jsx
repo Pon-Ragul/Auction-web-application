@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header";
 import Footer from "./Footer";
+import HeaderWrapper from "./Header2";
 export default function Faqs(){
     return(
         <>
-        <Header/>
+        <HeaderWrapper />
         <div className="FAQs">
             <p><h2 style={{fontWeight:530}} className="heading"><center>FREQUENTLY ASKED QUESTIONS</center></h2>
             <br/><br/><h3>How do I create an account on BidCraze?</h3>To create an account, click on the Sign Up button on the homepage, fill in your details<br/><br/>

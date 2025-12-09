@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header";
+import HeaderWrapper from "./Header2";
 import Footer from "./Footer";
 export default function ResponsibleBidding(){
     return(
        <>
-       <Header/>
+       <HeaderWrapper />
         <div className="ResponsibleBidding">
         <p><h2 style={{fontWeight:530}} className="heading"><center>RESPONSIBLE BIDDING</center></h2>
             <br/><br/><h3>Responsible Bidding<hr className="underline"></hr></h3>Online bidding sites are a fun and exciting way of winning and purchasing Products. Our intention is that BidCraze.com provides a positive customer experience. To this end, we encourage our Users to bid responsibly at all times.<br/><br/>

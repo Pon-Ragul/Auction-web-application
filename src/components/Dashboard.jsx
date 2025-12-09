@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import "./UserProfile.css";
 import HeaderWrapper from "./HeaderWrapper";
 import { useAuth } from "../context/AuthContext";
@@ -128,7 +128,6 @@ export default function Dashboard() {
                 <Envelope color="#666" size={20} />
                 <span>{user?.email || user?.user?.email || "user@example.com"}</span>
               </p>
-              <p className="bio">Passionate bidder and collector.</p>
             </div>
             <div className="user-stats">
               <div className="stat">
@@ -145,7 +144,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="account-settings">
-              <button className="btn-primary" onClick={handleEditProfile}>Edit Profile</button>
+              <button onClick={handleEditProfile} className="btn-primary">Edit Profile</button>
               <button onClick={handleLogout} className="btn-danger">Logout</button>
             </div>
           </div>
@@ -289,10 +288,10 @@ export default function Dashboard() {
                 </label>
               </div>
               <div className="edit-profile-buttons">
-                <button onClick={handleSaveProfile} className="btn-primary">
+                <button onClick={handleSaveProfile} className="editbutton">
                   Save Changes
                 </button>
-                <button onClick={handleCancelEdit} className="btn-danger">
+                <button onClick={handleCancelEdit} className="cancelbutton">
                   Cancel
                 </button>
               </div>

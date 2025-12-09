@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header";
+import HeaderWrapper from "./Header2";
 import Footer from "./Footer";
 export default function Privacy(){
     return(
         <>
-        <Header/>
+        <HeaderWrapper />
         <div className="termsandcondition">
             <p><h2 style={{fontWeight:530}} className="heading"><center>PRIVACY</center></h2>
             <br/><br/><h3>Information We Collect<hr className="underline"></hr></h3>We collect personal information such as your name, email address, phone number, and payment details when you register on BidCraze. Additionally, we may collect non-personal information like IP addresses, browser type, and usage patterns to enhance your experience.<br/><br/>

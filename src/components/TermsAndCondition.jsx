@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header";
+import HeaderWrapper from "./Header2";
 import Footer from "./Footer";
 export default function TermsAndConditions(){
     return(
         <>
-        <Header/>
+        <HeaderWrapper />
         <div className="termsandcondition">
             <p><h2 style={{fontWeight:530}} className="heading"><center>TERMS & CONDITIONS</center></h2>
             <br/><br/><h3>Eligibility<hr className="underline"></hr></h3>Users must be at least 18 years old to participate. They must provide accurate and complete registration details. BidCraze reserves the right to suspend or terminate accounts that violate these Terms.<br/><br/>
